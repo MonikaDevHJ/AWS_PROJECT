@@ -1,11 +1,7 @@
-import React from 'react'
-
-const Experience = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+const Experience = () =>{
+    return(
+        <div>
+            <p>Experince Details</p>
+        </div>
+    )
 }
-
-export default Experience

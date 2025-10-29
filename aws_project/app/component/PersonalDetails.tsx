@@ -1,11 +1,8 @@
-import React from 'react'
 
-const PersonalDetails = () => {
+
+const PersonalDeatils = () => {
   return (
-    <div>
-      
-    </div>
+   <div>Personal Details</div>
   )
-}
-
-export default PersonalDetails
+};
+export default PersonalDeatils

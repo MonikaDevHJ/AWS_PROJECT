@@ -26,7 +26,7 @@ interface CandidateFormState {
 
 type CandidateFormAction =
     | {
-        type: " SET_PERSONAL_DETAILS";
+        type: "SET_PERSONAL_DETAILS";
         payload: CandidateFormState["personalDetails"];
     }
     | {
@@ -49,7 +49,7 @@ const initialState: CandidateFormState = {
 
 function CandidateFormReducer(state: CandidateFormState, action: CandidateFormAction): CandidateFormState {
     switch (action.type) {
-        case " SET_PERSONAL_DETAILS":
+        case "SET_PERSONAL_DETAILS":
             return { ...state, personalDetails: action.payload };
         case "SET_EDUCATIONAL_DETAILS ":
             return { ...state, educationaleDetails: action.payload };

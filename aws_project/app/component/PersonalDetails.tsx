@@ -7,27 +7,28 @@ const PersonalDeatils = ({ nextStep }: { nextStep: () => void }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: "SET_PERSONAL_DETAILS",
-      payload: { ...state.personalDetails, [e.target.name]: e.target.value },
+      payload: { ...state.personalDetails, [e.target.name]: e.target.value }
     });
   };
 
   return (
     <div className="flex flex-col gap-4 w-80">
       <p className="text-lg font-semibold">Personal Details</p>
-      <input type="text"
+      <input
+        type="text"
         name="name"
         value={state.personalDetails.name}
         onChange={handleChange}
         placeholder="Full Name"
         className="border p-2 rounded"
-
-
       />
-      <input type="email" name="email" value={state.personalDetails.email}
+      <input
+        type="email"
+        name="email"
+        value={state.personalDetails.email}
         onChange={handleChange}
         placeholder="Enter Your email"
         className="broder p-2 rounded"
-
       />
 
       <input
@@ -44,10 +45,7 @@ const PersonalDeatils = ({ nextStep }: { nextStep: () => void }) => {
       >
         Next
       </button>
-
-
     </div>
-  )
+  );
 };
 export default PersonalDeatils;
-

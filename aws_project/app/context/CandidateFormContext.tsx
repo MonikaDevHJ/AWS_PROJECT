@@ -76,14 +76,14 @@ const CandidateFormContext = createContext <{
 
 // Provider to wrap enitre app
 
-export const CandidateFormProvider  = ({Children}:{Children:ReactNode})=>{
+export const CandidateFormProvider  = ({children}:{children:ReactNode})=>{
     const [state, dispatch] = useReducer(
         CandidateFormReducer, initialState
     );
 
     return (
         <CandidateFormContext.Provider value={{state,dispatch}}>
-            {Children}
+            {children}
         </CandidateFormContext.Provider>
     );
 };

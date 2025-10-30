@@ -18,13 +18,13 @@ export default function Home() {
       case 1:
         return <PersonalDeatils nextStep={nextStep} />;
 
-      case 2:
-        return <EducationalDetails nextStep={nextStep} prevStep={prevStep} />;
-      case 3:
-        return <Experience nextstep={nextStep} prevStep={prevStep} />;
-      case 4:
-        return <Preview prevStep={prevStep} />
-      default:
+      // case 2:
+      //   return <EducationalDetails nextStep={nextStep} prevStep={prevStep} />;
+      // case 3:
+      //   return <Experience nextstep={nextStep} prevStep={prevStep} />;
+      // case 4:
+      //   return <Preview prevStep={prevStep} />
+      // default:
         return <PersonalDeatils nextStep={nextStep} />
     }
   }

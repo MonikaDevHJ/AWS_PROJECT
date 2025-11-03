@@ -1,54 +1,42 @@
-"use client"
+"use client";
 
-import PersonalDeatils from "../app/component/PersonalDetails"
-import EducationalDetails from "../app/component/EducationalDetails"
-import Experience from "../app/component/Experience"
+import PersonalDeatils from "../app/component/PersonalDetails";
+import EducationalDetails from "../app/component/EducationalDetails";
+import Experience from "../app/component/Experience";
 import Preview from "./component/Preview";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function Home() {
+  const searchParams = useSearchParams();
 
-  const [step, setStep] = useState(1)
+  const stepFromurl = parseInt(searchParams.get("step") || "1", 10);
+    const [step, setStep] = useState(stepFromurl);
 
-  const nextStep = () => setStep((prev) => prev + 1)
-  const prevStep = () => setStep((prev) => prev - 1)
 
-  const renderStep = () => {
-    switch (step) {
-      case 1:
-        return <PersonalDeatils nextStep={nextStep} />;
+  useEffect ( ()=>{
+    setStep(stepFromurl)
+  },[])   // run when url step changes
 
-      // case 2:
-      //   return <EducationalDetails nextStep={nextStep} prevStep={prevStep} />;
-      // case 3:
-      //   return <Experience nextstep={nextStep} prevStep={prevStep} />;
-      // case 4:
-      //   return <Preview prevStep={prevStep} />
-      // default:
-        return <PersonalDeatils nextStep={nextStep} />
-    }
+
+  // it is tool to move any steps
+  const gotoStep = (stepNumber : number) =>{
+    setStep(stepNumber);
   }
 
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8">
-      <p className="text-2xl font-bold mb-6">Candidate Multi-Step Form</p>
-      {renderStep()}
-      <p className="mt-4 text-gray-500">step {step} of 4</p>
+    <div className="min-h-screen bg-gray-200">
+      <div className="flex items-center justify-center px-4 pt-16 text-center text-3xl font-bold sm:text-4xl md:text-5xl">
+        <p className="text-fuchsia-700">Candidate Form</p>
+      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
+      {/* Multi stage form  */}
+      <div className="mt-10 px- sm:px-10 md:px-24">
+        {step === 1 && <PersonalDeatils />}
+        {step === 2 && <EducationalDetails />}
+        {step === 3 && <Experience />}
+        {step === 4 && <Preview />}
+      </div>
     </div>
   );
 }

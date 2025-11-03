@@ -36,7 +36,7 @@ const PersonalDetails = () => {
 
         <div>
           <label className="mb-2 block text-base font-semibold sm:text-lg">
-            Enter Your Email
+            Email
           </label>
           <input
             type="text"
@@ -47,7 +47,7 @@ const PersonalDetails = () => {
 
         <div>
           <label className="mb-2 block text-base font-semibold sm:text-lg">
-            Enter You Phone Number
+            Phone Number
           </label>
           <input
             type="text"
@@ -58,7 +58,7 @@ const PersonalDetails = () => {
 
         <div>
           <label className="mb-2 block text-base font-semibold sm:text-lg">
-            Enter Your Address
+            Address
           </label>
           <input
             type="text"

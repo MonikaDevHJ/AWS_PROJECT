@@ -10,7 +10,7 @@ import { useSearchParams } from "next/navigation";
 export default function Home() {
   const searchParams = useSearchParams();
 
-  const stepFromurl = parseInt(searchParams.get("step") || "1", 10);
+  const stepFromurl = parseInt(searchParams.get("step") || "4", 10);
     const [step, setStep] = useState(stepFromurl);
 
 

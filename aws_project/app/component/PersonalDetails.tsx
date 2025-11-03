@@ -1,12 +1,104 @@
-import React from 'react'
+import React from "react";
 
 const PersonalDetails = () => {
   return (
-    <div>
-      <p className='text-black'>jhgfd</p>
-    </div>
-  )
-}
+    <div className="px-4 py-8 sm:px-6 md:px-10 lg:px-20">
+      <div className="mx-auto max-w-3xl space-y-6 rounded-xl bg-gray-100 p-6 sm:p-10 md:p-16">
+        <div>
+          <p className="text-center text-xl font-semibold sm:text-left sm:text-2xl">
+            Perosnal Details
+          </p>
+        </div>
 
-export default PersonalDetails
-  
+        {/*  */}
+        <div>
+          <label className="mb-2 block text-base font-semibold sm:text-lg">
+            Profile Photo
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
+          />
+        </div>
+
+        {/* name field */}
+        <div>
+          <label className="mb-2 block text-base font-semibold sm:text-lg">
+            Name
+          </label>
+          <input
+            type="text"
+            className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
+            placeholder="Enter Your Name"
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block text-base font-semibold sm:text-lg">
+            Enter Your Email
+          </label>
+          <input
+            type="text"
+            className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
+            placeholder="Enter Your Email"
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block text-base font-semibold sm:text-lg">
+            Enter You Phone Number
+          </label>
+          <input
+            type="text"
+            className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
+            placeholder="Enter Your Phone Number"
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block text-base font-semibold sm:text-lg">
+            Enter Your Address
+          </label>
+          <input
+            type="text"
+            className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
+            placeholder="Enter Your Address"
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block text-base font-semibold sm:text-lg">
+            Gender
+          </label>
+
+          <input
+            type="text"
+            className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
+            placeholder="Enter Your Gender"
+          />
+        </div>
+
+
+        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:justify-between">
+          <div className="w-full rounded-xl bg-fuchsia-500 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
+
+            <button>
+              Save
+            </button>
+          </div>
+
+          <div className="w-full rounded-xl bg-fuchsia-600 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
+            <button>
+              Next
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PersonalDetails;

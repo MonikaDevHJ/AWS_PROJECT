@@ -1,9 +1,7 @@
 "use client";
 
-import { useCandidateForm } from "../context/CandidateFormContext";
 
 const Experience = () => {
-  const { state, dispatch } = useCandidateForm();
   return (
     <div>
       <div className="px-4 py-8 sm:px-6 md:px-10 lg:px-20">

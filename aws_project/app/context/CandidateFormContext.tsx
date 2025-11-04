@@ -1,93 +1,116 @@
 "use client";
 
-import { Duru_Sans } from "next/font/google";
-import React, { createContext, useReducer, useContext, ReactNode, Children } from "react";
+import React, {
+  createContext,
+  useReducer,
+  useContext,
+  ReactNode,
+  Children
+} from "react";
 
-// Define form data shape
-interface CandidateFormState {
-    personalDetails: {
-        name: string;
-        email: string;
-        phone: string;
-    };
-    educationaleDetails: {
-        degree: string;
-        college: string;
-        year: string;
-    };
-    experienceDetails: {
-        company: string;
-        role: string;
-        duration: string;
-    };
+// 1️⃣ Define the Shape of our form Data
+interface PersonalDeatils {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  gender: string;
+}
+interface EducationalDetails {
+  degree: string;
+  stream: string;
+  university: string;
+  college: string;
+  score: string;
 }
 
-// Define All action (What can chnage the state)
+interface Experience {
+  company: string;
+  designation: string;
+  location: string;
+  years: string;
+}
 
-type CandidateFormAction =
-    | {
-        type: "SET_PERSONAL_DETAILS";
-        payload: CandidateFormState["personalDetails"];
-    }
-    | {
-        type: "SET_EDUCATIONAL_DETAILS ";
-        payload: CandidateFormState["educationaleDetails"];
-    }
-    | {
-        type: "SET_EXPERIENCE_DETAILS";
-        payload: CandidateFormState["experienceDetails"];
-    };
+// 2️⃣ combine Them all in to one big state type
+interface CandidateFormSatate {
+  personal: PersonalDeatils;
+  education: EducationalDetails;
+  experience: Experience;
+}
 
-// initial state (empty value)
-const initialState: CandidateFormState = {
-    personalDetails: { name: "", email: "", phone: "" },
-    educationaleDetails: { degree: "", college: "", year: "" },
-    experienceDetails: { company: "", role: "", duration: "" }
+// 3️⃣ Create initial default values
+
+const initialState: CandidateFormSatate = {
+  personal: {
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    gender: ""
+  },
+  education: {
+    degree: "",
+    stream: "",
+    university: "",
+    college: "",
+    score: ""
+  },
+  experience: {
+    company: "",
+    designation: "",
+    location: "",
+    years: ""
+  }
 };
 
-// Reducer  fucntion - control how state chenges
+// 4️⃣ Define all possible actions
+type Action =
+  | { type: "SET_PERSONAL_DETAILS"; payload: PersonalDeatils }
+  | { type: "SET_EDUCATIONAL_DETAILS"; payload: EducationalDetails }
+  | { type: "SET_EXPERIENCE_DETAILS"; Payload: Experience };
 
-function CandidateFormReducer(state: CandidateFormState, action: CandidateFormAction): CandidateFormState {
-    switch (action.type) {
-        case "SET_PERSONAL_DETAILS":
-            return { ...state, personalDetails: action.payload };
-        case "SET_EDUCATIONAL_DETAILS ":
-            return { ...state, educationaleDetails: action.payload };
-        case "SET_EXPERIENCE_DETAILS":
-            return { ...state, experienceDetails: action.payload };
-        default:
-            return state;
-
-    }
-
-
+// 5️⃣ Reducer function
+function formReducer(
+  state: CandidateFormSatate,
+  action: Action
+): CandidateFormSatate {
+  switch (action.type) {
+    case "SET_PERSONAL_DETAILS":
+      return { ...state, personal: action.payload };
+    case "SET_EDUCATIONAL_DETAILS":
+      return { ...state, education: action.payload };
+    case "SET_EXPERIENCE_DETAILS":
+      return { ...state, experience: action.Payload };
+    default:
+      return state;
+  }
 }
 
-// create Context 
-
-const CandidateFormContext = createContext <{
-    state : CandidateFormState;
-    dispatch : React.Dispatch<CandidateFormAction>;
+// 6️⃣ Create Context
+const CandidateFormContext = createContext<{
+  state: CandidateFormSatate;
+  dispatch: React.Dispatch<Action>;
 }>({
-    state: initialState,
-    dispatch : ()=> null
+  state: initialState,
+  dispatch: () => {}
 });
 
+// 7️⃣ Provider component
+export const CandidateFormProvider = ({
+  children
+}: {
+  children: ReactNode;
+}) => {
+  const [state, dispatch] = useReducer(formReducer, initialState);
 
-// Provider to wrap enitre app
-
-export const CandidateFormProvider  = ({children}:{children:ReactNode})=>{
-    const [state, dispatch] = useReducer(
-        CandidateFormReducer, initialState
-    );
-
-    return (
-        <CandidateFormContext.Provider value={{state,dispatch}}>
-            {children}
-        </CandidateFormContext.Provider>
-    );
+  return (
+    <CandidateFormContext.Provider value={{ state, dispatch }}>
+      {children}
+    </CandidateFormContext.Provider>
+  );
 };
 
 
-// custom Hook for  easy acces
- export const useCandidateForm = ()=> useContext(CandidateFormContext);
+// // 8️⃣ Custom Hook
+
+export const useCandidateForm = () => useContext(CandidateFormContext)

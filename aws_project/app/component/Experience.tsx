@@ -1,7 +1,18 @@
 "use client";
+import { useCandidateForm } from "../context/CandidateFormContext";
 
 
 const Experience = () => {
+
+const{ state, dispatch  } = useCandidateForm();
+
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: "SET_PERSONAL_DETAILS",
+      payload: { ...state.personal, [e.target.name]: e.target.value },
+    });
+  };
+
   return (
     <div>
       <div className="px-4 py-8 sm:px-6 md:px-10 lg:px-20">
@@ -20,6 +31,8 @@ const Experience = () => {
             </label>
             <input
               type="text"
+              value = {state.experience.company}
+              onChange={handleChange}
               className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
               placeholder="Infosys"
             />
@@ -31,6 +44,8 @@ const Experience = () => {
             </label>
             <input
               type="text"
+              value={state.experience.designation}
+              onChange={handleChange}
               className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
               placeholder="Software Deveoper / Sales Manager"
             />
@@ -42,6 +57,8 @@ const Experience = () => {
             </label>
             <input
               type="text"
+              value={state.experience.location}
+              onChange={handleChange}
               className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
               placeholder="Bengalore"
             />
@@ -53,6 +70,8 @@ const Experience = () => {
             </label>
             <input
               type="text"
+              value= {state.experience.years}
+              onChange={handleChange}
               className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
               placeholder="2.2"
             />

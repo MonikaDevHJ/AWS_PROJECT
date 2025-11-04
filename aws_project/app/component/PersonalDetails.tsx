@@ -1,6 +1,19 @@
 import React from "react";
+import { useCandidateForm } from "../context/CandidateFormContext";
 
 const PersonalDetails = () => {
+
+  const { state, dispatch } = useCandidateForm();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: "SET_PERSONAL_DETAILS",
+      payload: { ...state.personal, [e.target.name]: e.target.value },
+    });
+  };
+
+
+
   return (
     <div className="px-4 py-8 sm:px-6 md:px-10 lg:px-20">
       <div className="mx-auto max-w-3xl space-y-6 rounded-xl bg-gray-100 p-6 sm:p-10 md:p-16">
@@ -29,6 +42,8 @@ const PersonalDetails = () => {
           </label>
           <input
             type="text"
+            value={state.personal.name}
+            onChange={handleChange}
             className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
             placeholder="Enter Your Name"
           />
@@ -40,6 +55,8 @@ const PersonalDetails = () => {
           </label>
           <input
             type="text"
+            value={state.personal.email}
+            onChange={handleChange}
             className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
             placeholder="Enter Your Email"
           />
@@ -51,6 +68,8 @@ const PersonalDetails = () => {
           </label>
           <input
             type="text"
+            value={state.personal.phone}
+            onChange={handleChange}
             className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
             placeholder="Enter Your Phone Number"
           />
@@ -62,6 +81,8 @@ const PersonalDetails = () => {
           </label>
           <input
             type="text"
+            value={state.personal.address}
+            onChange={handleChange}
             className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
             placeholder="Enter Your Address"
           />
@@ -74,6 +95,8 @@ const PersonalDetails = () => {
 
           <input
             type="text"
+            value={state.personal.gender}
+            onChange={handleChange}
             className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
             placeholder="Enter Your Gender"
           />

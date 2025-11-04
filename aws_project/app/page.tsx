@@ -11,7 +11,7 @@ import { CandidateFormProvider } from "./context/CandidateFormContext";
 export default function Home() {
   const searchParams = useSearchParams();
 
-  const stepFromurl = parseInt(searchParams.get("step") || "4", 10);
+  const stepFromurl = parseInt(searchParams.get("step") || "1", 10);
   const [step, setStep] = useState(stepFromurl);
 
 
@@ -34,9 +34,9 @@ export default function Home() {
 
         {/* Multi stage form  */}
         <div className="mt-10 px- sm:px-10 md:px-24">
-          {step === 1 && <PersonalDeatils />}
-          {step === 2 && <EducationalDetails />}
-          {step === 3 && <Experience />}
+          {step === 1 && <PersonalDeatils  gotoStep={gotoStep} />}
+          {step === 2 && <EducationalDetails gotoStep={gotoStep} />}
+          {step === 3 && <Experience  gotoStep={gotoStep}/>}
           {step === 4 && <Preview />}
         </div>
       </div>

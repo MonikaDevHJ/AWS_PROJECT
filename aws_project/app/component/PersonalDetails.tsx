@@ -1,7 +1,7 @@
 import React from "react";
 import { useCandidateForm } from "../context/CandidateFormContext";
 
-const PersonalDetails = () => {
+const PersonalDetails = ({gotoStep }: {gotoStep : (step:number)=> void}) => {
 
   const { state, dispatch } = useCandidateForm();
 
@@ -106,7 +106,7 @@ const PersonalDetails = () => {
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:justify-between">
           <div className="w-full rounded-xl bg-fuchsia-500 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
 
-            <button>
+            <button onClick={ ()=>gotoStep(2) }>
               Save
             </button>
           </div>

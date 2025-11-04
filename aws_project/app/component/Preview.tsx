@@ -2,7 +2,7 @@
 
 import { useCandidateForm } from "../context/CandidateFormContext";
 
-const Preview = () => {
+const Preview = ({ gotoStep }: { gotoStep: (step: number) => void }) => {
 
   const {state} = useCandidateForm();
 
@@ -98,7 +98,8 @@ const Preview = () => {
 
         {/* Buttons */}
         <div className="mt-10 flex justify-center gap-12">
-          <button className="rounded-2xl border border-gray-500 bg-white px-6 py-2 text-xl font-semibold text-gray-700 hover:bg-gray-100">
+          <button className="rounded-2xl border border-gray-500 bg-white px-6 py-2 text-xl font-semibold text-gray-700 hover:bg-gray-100"
+          onClick={()=> gotoStep(3)}>
             Back
           </button>
 

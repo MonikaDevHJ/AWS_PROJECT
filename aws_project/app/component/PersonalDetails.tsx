@@ -1,18 +1,19 @@
 import React from "react";
 import { useCandidateForm } from "../context/CandidateFormContext";
 
-const PersonalDetails = ({gotoStep }: {gotoStep : (step:number)=> void}) => {
-
+const PersonalDetails = ({
+  gotoStep
+}: {
+  gotoStep: (step: number) => void;
+}) => {
   const { state, dispatch } = useCandidateForm();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: "SET_PERSONAL_DETAILS",
-      payload: { ...state.personal, [e.target.name]: e.target.value },
+      payload: { ...state.personal, [e.target.name]: e.target.value }
     });
   };
-
-
 
   return (
     <div className="px-4 py-8 sm:px-6 md:px-10 lg:px-20">
@@ -41,6 +42,7 @@ const PersonalDetails = ({gotoStep }: {gotoStep : (step:number)=> void}) => {
             Name
           </label>
           <input
+            name="name"
             type="text"
             value={state.personal.name}
             onChange={handleChange}
@@ -54,6 +56,7 @@ const PersonalDetails = ({gotoStep }: {gotoStep : (step:number)=> void}) => {
             Email
           </label>
           <input
+            name="email"
             type="text"
             value={state.personal.email}
             onChange={handleChange}
@@ -67,6 +70,7 @@ const PersonalDetails = ({gotoStep }: {gotoStep : (step:number)=> void}) => {
             Phone Number
           </label>
           <input
+            name="phone"
             type="text"
             value={state.personal.phone}
             onChange={handleChange}
@@ -80,6 +84,7 @@ const PersonalDetails = ({gotoStep }: {gotoStep : (step:number)=> void}) => {
             Address
           </label>
           <input
+            name="address"
             type="text"
             value={state.personal.address}
             onChange={handleChange}
@@ -94,6 +99,7 @@ const PersonalDetails = ({gotoStep }: {gotoStep : (step:number)=> void}) => {
           </label>
 
           <input
+            name="gender"
             type="text"
             value={state.personal.gender}
             onChange={handleChange}
@@ -102,22 +108,16 @@ const PersonalDetails = ({gotoStep }: {gotoStep : (step:number)=> void}) => {
           />
         </div>
 
-
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:justify-between">
           <div className="w-full rounded-xl bg-fuchsia-500 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
-
-            <button onClick={ ()=>gotoStep(2) }>
-              Save
-            </button>
+            <button    onClick={()=> gotoStep(1)}>Back</button>
           </div>
 
           <div className="w-full rounded-xl bg-fuchsia-600 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
-            <button>
-              Next
-            </button>
+            <button
+            onClick={() => gotoStep(2)}
+            >Next</button>
           </div>
-
-
         </div>
       </div>
     </div>

@@ -37,7 +37,7 @@ export default function Home() {
           {step === 1 && <PersonalDeatils  gotoStep={gotoStep} />}
           {step === 2 && <EducationalDetails gotoStep={gotoStep} />}
           {step === 3 && <Experience  gotoStep={gotoStep}/>}
-          {step === 4 && <Preview />}
+          {step === 4 && <Preview   gotoStep={gotoStep}/>}
         </div>
       </div>
     </CandidateFormProvider>

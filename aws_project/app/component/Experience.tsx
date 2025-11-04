@@ -2,7 +2,7 @@
 import { useCandidateForm } from "../context/CandidateFormContext";
 
 
-const Experience = () => {
+const Experience = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
 
 const{ state, dispatch  } = useCandidateForm();
 
@@ -89,7 +89,7 @@ const{ state, dispatch  } = useCandidateForm();
             </div>
 
             <div className="w-full rounded-xl bg-fuchsia-600 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
-              <button>
+              <button onClick={ ()=> gotoStep(3) }>
                 Next
               </button>
             </div>

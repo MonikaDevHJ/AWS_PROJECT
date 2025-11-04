@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useCandidateForm } from "../context/CandidateFormContext";
 
-const EducationalDetails = () => {
+const EducationalDetails = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
   const { state, dispatch } = useCandidateForm();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,7 +95,9 @@ const EducationalDetails = () => {
             </div>
 
             <div className="w-full rounded-xl bg-fuchsia-600 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
-              <button>Next</button>
+              <button
+                onClick={()=> gotoStep(3) }
+              >Next</button>
             </div>
           </div>
         </div>

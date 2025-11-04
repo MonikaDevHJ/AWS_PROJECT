@@ -1,4 +1,11 @@
+"use client"
+
+import { useCandidateForm } from "../context/CandidateFormContext";
+
 const Preview = () => {
+
+  const {state} = useCandidateForm();
+
   return (
     <div className="mt-10 px-4 sm:px-10 md:px-24">
       <div className="rounded-2xl bg-white p-6 shadow-lg sm:p-10 md:p-16">
@@ -19,20 +26,18 @@ const Preview = () => {
             </div>
             <div className="mt-3 ml-8 space-y-2">
               <p>
-                <strong>Name:</strong>
+                <strong>Name:</strong>{state.personal.name}
               </p>
               <p>
-                <strong>Phone:</strong>
+                <strong>Phone:</strong>{state.personal.phone}
               </p>
               <p>
-                <strong>Email:</strong>
+                <strong>Email:</strong>{state.personal.email}
               </p>
               <p>
-                <strong>Gender:</strong>
+                <strong>Gender:</strong>{state.personal.gender}
               </p>
-              <p>
-                <strong>Education:</strong>
-              </p>
+             
             </div>
           </div>
         </div>
@@ -48,19 +53,19 @@ const Preview = () => {
             </div>
             <div className="mt-3 ml-8 space-y-2">
               <p>
-                <strong>Degree:</strong>
+                <strong>Degree:</strong>{state.education.degree}
               </p>
               <p>
-                <strong>Stream:</strong>
+                <strong>Stream:</strong>{state.education.stream}
               </p>
               <p>
-                <strong>University:</strong>
+                <strong>University:</strong>{state.education.university}
               </p>
               <p>
-                <strong>College:</strong>
+                <strong>College:</strong>{state.education.college}
               </p>
               <p>
-                <strong>Score:</strong>
+                <strong>Score:</strong>{state.education.score}
               </p>
             </div>
           </div>
@@ -79,13 +84,13 @@ const Preview = () => {
             </div>
             <div className="mt-3 ml-8 space-y-2">
               <p>
-                <strong>Company:</strong>
+                <strong>Company:</strong>{state.experience.company}
               </p>
               <p>
-                <strong>Role:</strong>
+                <strong>Role:</strong>{state.experience.company}
               </p>
               <p>
-                <strong>Years:</strong>
+                <strong>Years:</strong>{state.experience.years}
               </p>
             </div>
           </div>

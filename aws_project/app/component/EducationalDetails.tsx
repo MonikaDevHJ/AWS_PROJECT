@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
 import { useCandidateForm } from "../context/CandidateFormContext";
 
-const EducationalDetails = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
+const EducationalDetails = ({
+  gotoStep
+}: {
+  gotoStep: (step: number) => void;
+}) => {
   const { state, dispatch } = useCandidateForm();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: "SET_PERSONAL_DETAILS",
-      payload: { ...state.personal, [e.target.name]: e.target.value },
+      type: "SET_EDUCATIONAL_DETAILS",
+      payload: { ...state.education, [e.target.name]: e.target.value },
     });
   };
-
 
   return (
     <div>
@@ -28,6 +31,7 @@ const EducationalDetails = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
               Education
             </label>
             <input
+              name="gradution"
               type="text"
               value={state.education.degree}
               onChange={handleChange}
@@ -41,6 +45,7 @@ const EducationalDetails = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
               Stream
             </label>
             <input
+              name="stream"
               type="text"
               value={state.education.stream}
               onChange={handleChange}
@@ -55,6 +60,7 @@ const EducationalDetails = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
             </label>
             <input
               type="text"
+              name="university"
               value={state.education.university}
               onChange={handleChange}
               className="w-full rounded border border-gray-500 p-2 focus:ring-2 focus:ring-fuchsia-300 focus:outline-none"
@@ -67,6 +73,7 @@ const EducationalDetails = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
               College Name
             </label>
             <input
+              name="college"
               type="text"
               value={state.education.college}
               onChange={handleChange}
@@ -81,6 +88,7 @@ const EducationalDetails = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
             </label>
 
             <input
+              name="cgpa"
               type="text"
               value={state.education.score}
               onChange={handleChange}
@@ -91,13 +99,11 @@ const EducationalDetails = ({gotoStep}: {gotoStep : (step:number)=>void}) => {
 
           <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row sm:justify-between">
             <div className="w-full rounded-xl bg-fuchsia-500 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
-              <button>Back</button>
+              <button onClick={() => gotoStep(2)}>Back</button>
             </div>
 
             <div className="w-full rounded-xl bg-fuchsia-600 px-6 py-2 text-lg font-semibold text-white sm:w-auto">
-              <button
-                onClick={()=> gotoStep(3) }
-              >Next</button>
+              <button onClick={() => gotoStep(3)}>Next</button>
             </div>
           </div>
         </div>
